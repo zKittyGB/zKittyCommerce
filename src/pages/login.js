@@ -1,6 +1,2 @@
-import "../scripts/header/basket.js";
-import "../scripts/header/deliveryUserInfo.js";
-import "../scripts/header/headerBottomSection.js";
-import "../scripts/header/researchArea.js";
-import "../scripts/header/returnAndOrder.js";
-import "../scripts/header/userMenu.js";
+import store from "../scripts/store/ConfigureStore.js";
+import login from "../scripts/login_main/loginForm.js";

@@ -24,6 +24,41 @@ main{
     width: 360px;
     margin-bottom: 30px;
 }
+.errorID{
+    margin-top: 20px;
+    height: 100px;
+    border: 1px #ee5761 solid;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorID em{
+    position: absolute;
+    color:rgb(180, 20, 20);
+    margin-top: -45px;
+    margin-left: -280px;
+}
+
+.errorID h1 {
+    margin:0;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color:rgb(180, 20, 20);
+    font-weight: 400;
+    width:70%;
+    text-align: left;
+}
+
+.errorID p {
+    margin:0;
+    font-size: 14px;
+    margin-left: 15px;
+    width:70%;
+    text-align: left;
+}
 
 .signInForm{
     margin-top: 20px;
@@ -51,15 +86,24 @@ main{
     border-radius: 3px;
     border: 1px #949494 solid;
 }
+.password {
+    display:none;
+}
 
-.submitSignIn{
+#password{
+    display: none;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px #949494 solid;
+}
+
+.submitSignInEmail, .submitSignInPassword{
     height:30px;
     margin-top: 10px;
     border-radius: 5px;
     border: none;
     background-color: #ee5761;
     cursor: pointer; /* Changer le curseur en pointeur de main */
-
 }
 
 .signInForm p{

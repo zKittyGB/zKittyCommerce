@@ -14,6 +14,7 @@ module.exports = {
       path.resolve(__dirname, "./src/scripts/header/returnAndOrder.js"),
       path.resolve(__dirname, "./src/scripts/header/userMenu.js"),
       path.resolve(__dirname, "./src/scripts/store/ConfigureStore.js"),
+      path.resolve(__dirname, "./src/scripts/login_main/loginForm.js"),
     ],
   },
   output: {
@@ -23,5 +24,20 @@ module.exports = {
 
   devServer: {
     static: path.resolve(__dirname, "./dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-transform-modules-commonjs"],
+          },
+        },
+      },
+    ],
   },
 };

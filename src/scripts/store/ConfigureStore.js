@@ -10,8 +10,8 @@ const initialState = {
     homeAdresseModal: "isClose",
   },
   login: {
-    email: "",
-    password: "",
+    email: "maow@cat.fr",
+    password: "pwedteuh",
   },
   itemInBasket: "0",
 };

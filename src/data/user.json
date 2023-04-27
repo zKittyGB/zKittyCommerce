@@ -1,0 +1,22 @@
+[{
+    "mail":"maow@cat.fr",
+    "password":"pweteuh",
+    "nom":"Maow",
+    "prenom":"Cat",
+    "age":35,
+    "adresse":{
+        "ville":"MaowLand",
+        "codePostal":"75001"
+    }
+},
+{
+    "mail":"bat@man.fr",
+    "password":"pweteuh",
+    "nom":"Bat",
+    "prenom":"Man",
+    "age":32,
+    "adresse":{
+        "ville":"Gotham",
+        "codePostal":"007"
+    }
+}]
