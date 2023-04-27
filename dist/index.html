@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="../src/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/indexMain.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/carrousel.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/footer.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../src/assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e477107ff1.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Intégration des icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&family=Roboto:wght@300;400;500;700&family=Shrikhand&family=Ubuntu:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>zKittyCommerce</title>
+  </head>
+  <body>
+    <header>
+      <div class="headerTopSection">
+        <a href="http://127.0.0.1:5501/dist/index.html">
+          <img
+            src="../src/assets/images/logo.png"
+            class="logo"
+            alt="zKittyCommerce home page"
+          />
+        </a>
+        <div class="deliveryUserInfo"></div>
+        <div class="researchArea"></div>
+        <a href="./pages/login.html" class="aUserMenu">
+          <div class="userMenu"></div>
+        </a>
+        <div class="returnAndOrder"></div>
+        <div class="basket"></div>
+      </div>
+      <div class="headerBottomSection"></div>
+    </header>
+    <main id="main">
+      <!-- lightbox area -->
+      <div class="carousel-container">
+        <div class="carousel-images"></div>
+        <div class="carousel-controls"></div>
+      </div>
+      <!-- first card area -->
+      <div class="topCardArea">
+        <div class="card cardResume"></div>
+        <div class="card cardTopSell"></div>
+        <div class="card cardBuyAgain"></div>
+        <div class="card cardFreeDelivery"></div>
+      </div>
+      <!-- second card area -->
+      <div class="bottomCardArea">
+        <div class="cardDuble cardRSE"></div>
+        <div class="card cardFrenchMerchandise"></div>
+        <div class="card cardPromo"></div>
+      </div>
+    </main>
+    <footer>
+      <!-- anchor to top -->
+      <div class="scroll-to-top" onclick="scrollToTop()">
+        <p>Retour en haut</p>
+      </div>
+      <div class="footerBody">
+        <a href="index.html">
+          <img
+            src="../src/assets/images/logo.png"
+            class="logoBottom"
+            alt="zKittyCommerce home page"
+          />
+        </a>
+        <div class="footerList"></div>
+      </div>
+    </footer>
+    <script src="./scripts.bundle.js"></script>
+    <script src="./app.bundle.js"></script>
+    <script src="../src/scripts/footer/footer.js"></script>
+  </body>
+</html>
