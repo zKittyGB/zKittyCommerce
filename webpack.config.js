@@ -15,6 +15,7 @@ module.exports = {
       path.resolve(__dirname, "./src/scripts/header/userMenu.js"),
       path.resolve(__dirname, "./src/scripts/store/ConfigureStore.js"),
       path.resolve(__dirname, "./src/scripts/login_main/loginForm.js"),
+      path.resolve(__dirname, "./src/scripts/login_main/setLoginInState.js"),
     ],
   },
   output: {

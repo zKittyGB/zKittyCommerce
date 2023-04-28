@@ -16,7 +16,6 @@ chargerDonneesJSON();
 
 function displayLoginForm() {
   // function that create the display of the research area
-  const state = store.getState();
   const loginForm = document.querySelector(".signInForm");
   const buttonSubmitEmail = document.createElement("button");
   const buttonSubmitPassword = document.createElement("button");
@@ -46,8 +45,10 @@ function displayLoginForm() {
   function checkValidateMail(e) {
     // function that search for a match between the value of state.login.email in userJson
     e.preventDefault();
+    const state = store.getState();
     let emailFound = false;
     for (let i = 0; i < userJson.length; i++) {
+      console.log("tagada", state.login.email);
       if (userJson[i].mail === state.login.email) {
         emailFound = true;
         user = userJson[i];
@@ -71,9 +72,12 @@ function displayLoginForm() {
     }
   }
   function checkValidatePassword(e) {
-    e.preventDefault;
+    e.preventDefault();
+    const state = store.getState();
     if (user.password === state.login.password) {
-      console.log("ta");
+      store.dispatch({ type: "setIsLogged" });
+      localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
+      window.location.href = "../index.html";
     } else {
       const emAlert = document.querySelector(".fa-triangle-exclamation");
       emAlert.style.marginTop = "-30px";

@@ -9,3 +9,9 @@ import returnAndOrder from "./scripts/header/returnAndOrder.js";
 import userMenu from "./scripts/header/userMenu.js";
 const state = store.getState();
 console.log(state);
+
+store.subscribe(() => {
+  // Abonnez-vous aux changements du store
+  const updatedState = store.getState();
+  console.log(updatedState);
+});
