@@ -6,8 +6,10 @@ const savedState = JSON.parse(localStorage.getItem("state"));
 let initialState = {
   isLogged: false,
   user: {
-    firstName: "Axel",
-    adress: "Nantes 44300",
+    firstName: "",
+    lastName: "",
+    age: "",
+    adress: "",
   },
   modal: {
     homeAdresseModal: "isClose",
@@ -20,6 +22,11 @@ let initialState = {
 };
 
 export const setIsLoggedAction = { type: "setIsLogged" };
+export const setDisconnectdAction = { type: "setDisconnect" };
+export const setUserDataAction = (email) => ({
+  type: "setUserData",
+  payload: { email },
+});
 export const setEmailInStateAction = (email) => ({
   type: "setEmailInState",
   payload: { email },
@@ -57,6 +64,22 @@ const myReducer = (state = initialState, action) => {
         password: action.payload,
       },
     };
+  }
+  if (action.type === "setUserData") {
+    const { firstName, lastName, age, adress } = action.payload;
+    return {
+      ...state,
+      user: {
+        firstName,
+        lastName,
+        age,
+        adress,
+      },
+    };
+  }
+  if (action.type === "setDisconnect") {
+    localStorage.removeItem("state");
+    return initialState;
   }
   return state;
 };

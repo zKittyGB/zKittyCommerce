@@ -48,7 +48,6 @@ function displayLoginForm() {
     const state = store.getState();
     let emailFound = false;
     for (let i = 0; i < userJson.length; i++) {
-      console.log("tagada", state.login.email);
       if (userJson[i].mail === state.login.email) {
         emailFound = true;
         user = userJson[i];
@@ -70,13 +69,23 @@ function displayLoginForm() {
       pErrorID.textContent =
         "Impossible de trouver un compte correspondant à cette adresse e-mail";
     }
+    console.log(user);
   }
   function checkValidatePassword(e) {
     e.preventDefault();
     const state = store.getState();
     if (user.password === state.login.password) {
       store.dispatch({ type: "setIsLogged" });
-      localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
+      store.dispatch({
+        type: "setUserData",
+        payload: {
+          firstName: user.prenom,
+          lastName: user.nom,
+          age: user.age,
+          adress: user.adresse,
+        },
+      }),
+        localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
       window.location.href = "../index.html";
     } else {
       const emAlert = document.querySelector(".fa-triangle-exclamation");

@@ -1,3 +1,5 @@
+import store from "../store/ConfigureStore.js";
+
 function displayProductMenu() {
   /*function that create the display of the product Menu */
   const divProductMenu = document.querySelector(".headerBottomSection");
@@ -13,6 +15,8 @@ function displayProductMenu() {
   const pGiftCard = document.createElement("p");
   const divSeller = document.createElement("div");
   const pSeller = document.createElement("p");
+  const disconnect = document.createElement("div");
+  const pDisconnect = document.createElement("p");
   //Create promo area
   divPromo.setAttribute("class", "promoProductMenu");
   pPromo.setAttribute("class", "pPromo");
@@ -37,6 +41,10 @@ function displayProductMenu() {
   divSeller.setAttribute("class", "sellerProductMenu");
   pSeller.setAttribute("class", "pSeller");
   pSeller.textContent = "Vendre sur zKittyCommerce";
+  //Create Temporary disconnect area
+  disconnect.setAttribute("class", "sellerProductMenu");
+  pDisconnect.setAttribute("class", "pDisconnect");
+  pDisconnect.textContent = "Se deconnecter";
   //link above element to each other
   divProductMenu.appendChild(divPromo);
   divPromo.appendChild(pPromo);
@@ -50,5 +58,14 @@ function displayProductMenu() {
   divGiftCard.appendChild(pGiftCard);
   divProductMenu.appendChild(divSeller);
   divSeller.appendChild(pSeller);
+  divProductMenu.appendChild(disconnect);
+  disconnect.appendChild(pDisconnect);
+
+  //temporary function to disconnect
+  function setDisconnect() {
+    const state = store.getState();
+    store.dispatch({ type: "setDisconnect" });
+  }
+  disconnect.addEventListener("click", setDisconnect);
 }
 displayProductMenu();
