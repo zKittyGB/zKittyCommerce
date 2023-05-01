@@ -5,6 +5,8 @@ module.exports = {
     app: path.resolve(__dirname, "./src/index.js"),
     login: path.resolve(__dirname, "./src/pages/login.js"),
     scripts: [
+      path.resolve(__dirname, "./src/scripts/home_main/adressModal.js"),
+      path.resolve(__dirname, "./src/scripts/home_main/openAdressModal.js"),
       path.resolve(__dirname, "./src/scripts/home_main/carrousel.js"),
       path.resolve(__dirname, "./src/scripts/home_main/homeCard.js"),
       path.resolve(__dirname, "./src/scripts/header/basket.js"),

@@ -69,7 +69,6 @@ function displayLoginForm() {
       pErrorID.textContent =
         "Impossible de trouver un compte correspondant à cette adresse e-mail";
     }
-    console.log(user);
   }
   function checkValidatePassword(e) {
     e.preventDefault();
@@ -79,10 +78,11 @@ function displayLoginForm() {
       store.dispatch({
         type: "setUserData",
         payload: {
-          firstName: user.prenom,
-          lastName: user.nom,
+          firstName: user.firstName,
+          lastName: user.lastName,
           age: user.age,
-          adress: user.adresse,
+          zipShown: user.adress.zip,
+          adress: user.adress,
         },
       }),
         localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage

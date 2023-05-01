@@ -1,0 +1,152 @@
+.adress-modal {
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+.adress-modal-content {
+    width:20%;
+    height: 17%;
+    min-height: 168px;
+    background-color: #fff;
+    border-radius: 8px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adress-modal-content-title {
+    color:black;
+    width: 100%;
+    height:60px;
+    background-color: #f0f2f2;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #d5d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.adress-modal-content-title h1 {
+    margin:0;
+    font-size: 18px;
+    width:80%;
+}
+
+.adress-modal-content-body {
+    color: #727575;
+    width:80%;
+    height: 77%;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+  
+.adress-modal-content-body p {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.adress-modal-content-body a {
+    color: #007185;
+}
+
+.adress-modal-content-body-button {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ee5761;
+    cursor: pointer; /* Changer le curseur en pointeur de main */
+}
+
+.adress-modal-content-body-adress {
+    margin-top: 5px;
+    width: 100%;
+    border: 3px #007185 solid;
+    border-radius: 8px;
+    background-color: #edfdff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.adress-modal-content-body-adress p {
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    font-size: 15px;
+    color:black;
+}
+
+.adress-modal-content-body-adress-nameStreet {
+    display: flex;
+    flex-direction: row;
+}
+
+.adress-modal-content-body-adress-lineSelectZip {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    margin:0;
+    background-color: #bbbfbf;
+    top: 7px;
+    left: 0;
+}
+
+.adress-modal-content-body-adress-divSelectZip {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 2 0px;
+}
+
+.adress-modal-content-body-adress-divSelectZip p {
+    padding-left: 2px;
+    padding-right: 2px;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: #fff;
+}
+
+.adress-modal-content-body-divInputZipSelect {
+    width:100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adress-modal-content-body-inputZipSelect {
+    width:60%;
+    height: 25px;
+    border: 1px #888c8c solid;
+    border-radius: 5px;
+    text-indent: 5px;
+}
+
+.adress-modal-content-body-inputZipSelect:focus {
+    outline: none;
+    box-shadow: 0 0 1px #fff, 0 0 2px #00bfff, 0 0 3px #00bfff;
+}
+
+.adress-modal-content-body-buttonSubmitZipSelect {
+    width:35%;
+    height: 29px;
+    border: 1px #d5d9d9 solid;
+    border-radius: 5px;
+    background-color: #ffffff;
+}

@@ -9,10 +9,21 @@ let initialState = {
     firstName: "",
     lastName: "",
     age: "",
-    adress: "",
+    zipShown: "",
+    adress: [
+      {
+        title: "",
+        city: "",
+        zip: "",
+        zipShown: "",
+        street: "",
+        country: "",
+        phone: "",
+      },
+    ],
   },
   modal: {
-    homeAdresseModal: "isClose",
+    adressModal: "isClose",
   },
   login: {
     email: "",
@@ -22,10 +33,16 @@ let initialState = {
 };
 
 export const setIsLoggedAction = { type: "setIsLogged" };
+export const setAdressModalIsOpenAction = { type: "setAdressModalIsOpen" };
 export const setDisconnectdAction = { type: "setDisconnect" };
-export const setUserDataAction = (email) => ({
+
+export const setZipAdressFromModalAction = (zip) => ({
+  type: "setZipAdressFromModal",
+  payload: { zip },
+});
+export const setUserDataAction = (data) => ({
   type: "setUserData",
-  payload: { email },
+  payload: { data },
 });
 export const setEmailInStateAction = (email) => ({
   type: "setEmailInState",
@@ -47,6 +64,15 @@ const myReducer = (state = initialState, action) => {
       isLogged: true,
     };
   }
+  if (action.type === "setAdressModalIsOpen") {
+    return {
+      ...state,
+      modal: {
+        ...state.modal,
+        adressModal: "isOpen",
+      },
+    };
+  }
   if (action.type === "setEmailInState") {
     return {
       ...state,
@@ -66,17 +92,29 @@ const myReducer = (state = initialState, action) => {
     };
   }
   if (action.type === "setUserData") {
-    const { firstName, lastName, age, adress } = action.payload;
+    const { firstName, lastName, age, zipShown, adress } = action.payload;
     return {
       ...state,
       user: {
         firstName,
         lastName,
         age,
+        zipShown,
         adress,
       },
     };
   }
+  if (action.type === "setZipAdressFromModal") {
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        zipShown: action.payload,
+      },
+    };
+    console.log(state);
+  }
+
   if (action.type === "setDisconnect") {
     localStorage.removeItem("state");
     return initialState;
