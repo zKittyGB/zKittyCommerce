@@ -74,7 +74,7 @@ body{
 }
 
 .cardRSEBody {
-    background-image: url("../assets/images/card/rse.png");
+    background-image: url("../../assets/images/card/rse.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

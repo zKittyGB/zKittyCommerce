@@ -16,7 +16,7 @@ function displayUserMenu() {
     pTitleMenu.style.marginLeft = "10px";
   }
   divTitleMenu.setAttribute("class", "titleMenu");
-  pTitleMenu.setAttribute("class", "pTitleMenu");
+  pTitleMenu.setAttribute("class", "pTitleMenu ");
   pTitleMenu.textContent = "Compte et listes";
   emMenu.setAttribute("class", "arrowDownUserMenu fa-solid fa-caret-down");
   divUserMenu.appendChild(pUserName);

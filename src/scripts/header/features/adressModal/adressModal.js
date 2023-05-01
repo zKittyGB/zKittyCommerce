@@ -1,4 +1,4 @@
-import store from "../store/ConfigureStore.js";
+import store from "../../../store/ConfigureStore.js";
 
 function updateAdressModal() {
   const adressModalBody = document.querySelector(".adress-modal-content-body");
@@ -100,14 +100,38 @@ function inputZipSelect() {
   const divInputZipSelect = document.createElement("div");
   const inputZipSelect = document.createElement("input");
   const buttonSubmitZipSelect = document.createElement("button");
-  function handleClick() {
+  function handleClick(event) {
     //function that catch and stock new ZipCode
-    store.dispatch({
-      type: "setZipAdressFromModal",
-      payload: inputZipSelect.value,
-    });
-    localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
-    location.reload();
+    if (inputZipSelect.value.length === 5) {
+      //apply the new zip
+      store.dispatch({
+        type: "setZipAdressFromModal",
+        payload: inputZipSelect.value,
+      });
+      localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
+      location.reload();
+    } else {
+      //show message zip error
+      if (!document.querySelector(".adress-modal-content-body-divErrorZip")) {
+        const pErrorZip = document.createElement("p");
+        const divErrorZip = document.createElement("div");
+        const emErrorZip = document.createElement("em");
+        divErrorZip.setAttribute(
+          "class",
+          "adress-modal-content-body-divErrorZip"
+        );
+        pErrorZip.textContent = "Veuillez entrer un code postal valide";
+        pErrorZip.style.color = "red";
+        emErrorZip.setAttribute(
+          "class",
+          "fa-solid fa-circle-exclamation fa-xl"
+        );
+        emErrorZip.style.color = "red";
+        divInputZipSelect.appendChild(divErrorZip);
+        divErrorZip.appendChild(emErrorZip);
+        divErrorZip.appendChild(pErrorZip);
+      }
+    }
   }
   divInputZipSelect.setAttribute(
     "class",
@@ -119,6 +143,7 @@ function inputZipSelect() {
   );
   inputZipSelect.setAttribute("maxlength", "5");
   inputZipSelect.setAttribute("pattern", "[0-9]{5}");
+  inputZipSelect.pattern = "[0-9]{5}";
   buttonSubmitZipSelect.setAttribute(
     "class",
     "adress-modal-content-body-buttonSubmitZipSelect"

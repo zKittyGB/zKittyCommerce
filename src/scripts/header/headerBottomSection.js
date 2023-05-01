@@ -18,31 +18,49 @@ function displayProductMenu() {
   const disconnect = document.createElement("div");
   const pDisconnect = document.createElement("p");
   //Create promo area
-  divPromo.setAttribute("class", "promoProductMenu");
+  divPromo.setAttribute("class", "promoProductMenu headerBottomSectionButton");
   pPromo.setAttribute("class", "pPromo");
   pPromo.textContent = "Promos";
   //Create top sell area
-  divTopSell.setAttribute("class", "topSellProductMenu");
+  divTopSell.setAttribute(
+    "class",
+    "topSellProductMenu headerBottomSectionButton"
+  );
   pTopSell.setAttribute("class", "pTopSell");
   pTopSell.textContent = "Top des ventes";
   //Create Buy again area
-  divBuyAgain.setAttribute("class", "buyAgainProductMenu");
+  divBuyAgain.setAttribute(
+    "class",
+    "buyAgainProductMenu headerBottomSectionButton"
+  );
   pBuyAgain.setAttribute("class", "pBuyAgain");
   pBuyAgain.textContent = "Acheter à nouveau";
   //Create free delivery area
-  divFreeDelivery.setAttribute("class", "freeDeliveryProductMenu");
+  divFreeDelivery.setAttribute(
+    "class",
+    "freeDeliveryProductMenu headerBottomSectionButton"
+  );
   pFreeDelivery.setAttribute("class", "pFreeDelivery");
   pFreeDelivery.textContent = "Livraison gratuite";
   //Create gift card area
-  divGiftCard.setAttribute("class", "giftCardProductMenu");
+  divGiftCard.setAttribute(
+    "class",
+    "giftCardProductMenu headerBottomSectionButton"
+  );
   pGiftCard.setAttribute("class", "pGiftCard");
   pGiftCard.textContent = "Cartes cadeaux";
   //Create seller area
-  divSeller.setAttribute("class", "sellerProductMenu");
+  divSeller.setAttribute(
+    "class",
+    "sellerProductMenu headerBottomSectionButton"
+  );
   pSeller.setAttribute("class", "pSeller");
   pSeller.textContent = "Vendre sur zKittyCommerce";
   //Create Temporary disconnect area
-  disconnect.setAttribute("class", "sellerProductMenu");
+  disconnect.setAttribute(
+    "class",
+    "sellerProductMenu headerBottomSectionButton"
+  );
   pDisconnect.setAttribute("class", "pDisconnect");
   pDisconnect.textContent = "Se deconnecter";
   //link above element to each other

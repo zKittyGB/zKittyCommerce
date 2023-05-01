@@ -126,6 +126,7 @@
     margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -149,4 +150,20 @@
     border: 1px #d5d9d9 solid;
     border-radius: 5px;
     background-color: #ffffff;
+}
+
+.adress-modal-content-body-divErrorZip {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.adress-modal-content-body-divErrorZip p{
+    margin:0;
+    margin-left: 5px;
 }

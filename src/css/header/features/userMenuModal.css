@@ -1,0 +1,48 @@
+.userMenuModal {
+    z-index: 2;
+    position: absolute;
+    top:0;
+    right:7%;
+    height: 350px;
+    width: 25%;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #bbbbbb;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:10px;
+    box-sizing: border-box;
+    color:black;
+}
+
+.listUserMenuModal {
+    width:50%;
+    height: 100%;
+    margin:0;
+    padding:10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-right:1px #eeeeee solid;
+}
+
+.titleListUserMenuModal {
+    border-bottom: 1px #eeeeee solid;
+}
+
+.titleListUserMenuModal h1{
+    margin:0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.accountUserMenuModal {
+    width: 50%;
+    height: 100%;
+    margin:0;
+    padding:10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
