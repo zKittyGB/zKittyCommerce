@@ -1,10 +1,21 @@
 .userMenuModal {
     z-index: 2;
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.userMenuModal-content {
+    z-index: 2;
     position: absolute;
-    top:0;
+    top:49px;
     right:7%;
     height: 350px;
-    width: 25%;
+    width: 40%;
     background-color: white;
     border-radius: 3px;
     border: 1px solid #bbbbbb;
@@ -16,33 +27,97 @@
     color:black;
 }
 
-.listUserMenuModal {
-    width:50%;
+.fa-caret-up {
+    position: absolute;
+    z-index: -1;
+    top:0px;
+    right:17.5%;
+    color: white; 
+}
+
+.buyAgainUserMenuModal{
+    width:33%;
     height: 100%;
     margin:0;
     padding:10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-right:1px #bbbbbb solid;
+}
+
+.listUserMenuModal{
+    width:33%;
+    height: 100%;
+    margin:0;
+    padding:10px;
+    padding-left: 25px;
+    padding-right: 25px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border-right:1px #eeeeee solid;
 }
 
+.userMenuModal-content a {
+    color: black;
+}
+
+.userMenuModal-content a:hover {
+    color: #e30613;
+    text-decoration: underline;
+}
+
 .titleListUserMenuModal {
     border-bottom: 1px #eeeeee solid;
 }
 
-.titleListUserMenuModal h1{
+.userMenuModal-content h1{
     margin:0;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
+.userMenuModal-content p{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.userMenuModal-content img{
+    position: absolute;
+    bottom: -1px;
+    right:4px;
+    width:250px;
+}
 .accountUserMenuModal {
-    width: 50%;
+    width: 33%;
     height: 100%;
     margin:0;
     padding:10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+}
+
+.ulBodyListUserMenuModal {  
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+.ulAccountListUserMenuModal {  
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+.ulBodyListUserMenuModal li, .ulAccountListUserMenuModal li{
+    margin-bottom: 5px;  
 }

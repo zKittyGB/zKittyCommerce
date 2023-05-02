@@ -17,6 +17,10 @@ module.exports = {
         __dirname,
         "./src/scripts/header/features/userMenuModal/userMenuModal.js"
       ),
+      path.resolve(
+        __dirname,
+        "./src/scripts/header/features/userMenuModal/openUserMenuModal.js"
+      ),
       path.resolve(__dirname, "./src/scripts/header/basket.js"),
       path.resolve(__dirname, "./src/scripts/header/deliveryUserInfo.js"),
       path.resolve(__dirname, "./src/scripts/header/headerBottomSection.js"),

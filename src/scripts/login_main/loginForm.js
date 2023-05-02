@@ -83,6 +83,7 @@ function displayLoginForm() {
           age: user.age,
           zipShown: user.adress.zip,
           adress: user.adress,
+          wishList: user.wishList,
         },
       }),
         localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage

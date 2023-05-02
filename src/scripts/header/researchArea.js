@@ -1,6 +1,7 @@
 function displayResearch() {
   /*function that create the display of the research area */
-  const divResearchArea = document.querySelector(".researchArea");
+  const headerTopSection = document.querySelector(".headerTopSection");
+  const divResearchArea = document.createElement("div");
   const formResearch = document.createElement("form");
   const selectResearch = document.createElement("select");
   const emSelectResearch = document.createElement("em");
@@ -10,6 +11,7 @@ function displayResearch() {
   const buttonResearch = document.createElement("button");
   const emButtonResearch = document.createElement("em");
   formResearch.setAttribute("class", "formResearch");
+  divResearchArea.setAttribute("class", "researchArea");
   formResearch.setAttribute("tabindex", "0");
   selectResearch.setAttribute("id", "categorySelect");
   emSelectResearch.setAttribute(
@@ -30,6 +32,7 @@ function displayResearch() {
     "class",
     "searchIcon fa-solid fa-magnifying-glass"
   );
+  headerTopSection.appendChild(divResearchArea);
   divResearchArea.appendChild(formResearch);
   formResearch.appendChild(selectResearch);
   formResearch.appendChild(emSelectResearch);

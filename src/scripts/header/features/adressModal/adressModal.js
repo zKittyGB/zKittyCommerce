@@ -96,13 +96,15 @@ function cardAdressCreator() {
 }
 
 function inputZipSelect() {
+  //function to update a selected zip by the user
   const adressModalBody = document.querySelector(".adress-modal-content-body");
   const divInputZipSelect = document.createElement("div");
   const inputZipSelect = document.createElement("input");
   const buttonSubmitZipSelect = document.createElement("button");
   function handleClick(event) {
     //function that catch and stock new ZipCode
-    if (inputZipSelect.value.length === 5) {
+    const regex = /^[0-9]+$/; // regex to check if value contain only number
+    if (inputZipSelect.value.length === 5 && regex.test(inputZipSelect.value)) {
       //apply the new zip
       store.dispatch({
         type: "setZipAdressFromModal",
@@ -142,8 +144,6 @@ function inputZipSelect() {
     "adress-modal-content-body-inputZipSelect"
   );
   inputZipSelect.setAttribute("maxlength", "5");
-  inputZipSelect.setAttribute("pattern", "[0-9]{5}");
-  inputZipSelect.pattern = "[0-9]{5}";
   buttonSubmitZipSelect.setAttribute(
     "class",
     "adress-modal-content-body-buttonSubmitZipSelect"

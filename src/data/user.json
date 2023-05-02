@@ -11,8 +11,9 @@
         "street": "13 rue de part la bas",
         "country": "MaowLand",
         "phone": "0909090909"
-    }
-},
+    },
+    "wishList": ["Créer une liste","Ma Liste Warhammer","Pour plus tard"]
+    },
 {
     "mail": "bat@man.fr",
     "password": "pweteuh",

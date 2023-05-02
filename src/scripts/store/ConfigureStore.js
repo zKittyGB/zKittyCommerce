@@ -21,6 +21,7 @@ let initialState = {
         phone: "",
       },
     ],
+    wishLish: [],
   },
   modal: {
     adressModal: "isClose",
@@ -92,7 +93,8 @@ const myReducer = (state = initialState, action) => {
     };
   }
   if (action.type === "setUserData") {
-    const { firstName, lastName, age, zipShown, adress } = action.payload;
+    const { firstName, lastName, age, zipShown, adress, wishList } =
+      action.payload;
     return {
       ...state,
       user: {
@@ -101,6 +103,7 @@ const myReducer = (state = initialState, action) => {
         age,
         zipShown,
         adress,
+        wishList,
       },
     };
   }
