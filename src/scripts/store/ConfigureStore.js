@@ -5,6 +5,7 @@ const savedState = JSON.parse(localStorage.getItem("state"));
 
 let initialState = {
   isLogged: false,
+  itemInBasket: "0",
   user: {
     firstName: "",
     lastName: "",
@@ -30,13 +31,19 @@ let initialState = {
     email: "",
     password: "",
   },
-  itemInBasket: "0",
+  research: {
+    userResultResearch: [],
+    researchValue: "",
+  },
 };
 
 export const setIsLoggedAction = { type: "setIsLogged" };
 export const setAdressModalIsOpenAction = { type: "setAdressModalIsOpen" };
 export const setDisconnectdAction = { type: "setDisconnect" };
-
+export const setResearchResultAction = (userResultResearch) => ({
+  type: "setResearchResult",
+  payload: { searchResult, inputValue },
+});
 export const setZipAdressFromModalAction = (zip) => ({
   type: "setZipAdressFromModal",
   payload: { zip },
@@ -63,6 +70,17 @@ const myReducer = (state = initialState, action) => {
     return {
       ...state,
       isLogged: true,
+    };
+  }
+  if (action.type === "setResearchResult") {
+    console.log(action.payload);
+    return {
+      ...state,
+      research: {
+        ...state.research,
+        userResultResearch: action.payload.searchResult,
+        researchValue: action.payload.inputValue,
+      },
     };
   }
   if (action.type === "setAdressModalIsOpen") {
@@ -115,7 +133,6 @@ const myReducer = (state = initialState, action) => {
         zipShown: action.payload,
       },
     };
-    console.log(state);
   }
 
   if (action.type === "setDisconnect") {

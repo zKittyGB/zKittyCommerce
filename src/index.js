@@ -11,6 +11,8 @@ import userMenuModal from "./scripts/header/features/userMenuModal/userMenuModal
 import openUserMenuModal from "./scripts/header/features/userMenuModal/openUserMenuModal.js";
 import carrousel from "./scripts/home_main/carrousel.js";
 import homeCard from "./scripts/home_main/homeCard.js";
+import footer from "./scripts/footer/footer.js";
+
 const state = store.getState();
 console.log(state);
 

@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     app: path.resolve(__dirname, "./src/index.js"),
     login: path.resolve(__dirname, "./src/pages/login.js"),
+    research: path.resolve(__dirname, "./src/pages/research.js"),
     scripts: [
       path.resolve(
         __dirname,
@@ -32,6 +33,8 @@ module.exports = {
       path.resolve(__dirname, "./src/scripts/home_main/homeCard.js"),
       path.resolve(__dirname, "./src/scripts/login_main/loginForm.js"),
       path.resolve(__dirname, "./src/scripts/login_main/setLoginInState.js"),
+      path.resolve(__dirname, "./src/scripts/research/researchDisplay.js"),
+      path.resolve(__dirname, "./src/scripts/footer/footer.js"),
     ],
   },
   output: {
