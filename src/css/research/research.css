@@ -91,7 +91,6 @@ body{
 .research-body-resultsArea-resultsGallery-card-details-notation {
     width:60%;
     color:#ffa41c;
-
 }
 
 #sortInput {
@@ -115,7 +114,6 @@ body{
 #sortInput:focus {
     outline: none;
     border: 1px solid #000000;
-
     box-shadow: 0px 0px 5px #0ca8c4;
 }
 
@@ -125,3 +123,75 @@ body{
     margin-right: 35px;
 }
 
+/* menu filter left */
+.research-body-filterArea-notation {
+    margin-left: 30px;
+}
+.research-body-filterArea-notation-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 20px;
+    margin: 0;
+}
+.research-body-filterArea-notation-stars p {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.research-body-filterArea-price {
+    margin-left:30px;
+    margin-top: 20px;
+}
+
+.checkboxPriceFilter {
+    display: flex;
+    flex-direction: row;
+    height:20px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.research-body-filterArea-price-divInputsPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice {
+    width:60px;
+    height: 30px;
+    border: 1px solid rgb(124, 124, 124);
+    border-radius: 4px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice p{
+    margin: 0;
+    margin-left: 2px;
+    font-size: 14px;
+    color: rgb(78, 77, 77);
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice-input {
+    width:28px;
+    border: none;
+    margin-top: 1px;
+    height: 85%;
+}
+.research-body-filterArea-price-divInputsPrice-inputPrice-input:focus {
+    outline: none;
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice-button {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(189, 189, 189);
+    background-color: white;
+    box-shadow: 0px 2px 1px rgba(150, 150, 150, 0.2);
+
+}

@@ -34,6 +34,7 @@ module.exports = {
       path.resolve(__dirname, "./src/scripts/login_main/loginForm.js"),
       path.resolve(__dirname, "./src/scripts/login_main/setLoginInState.js"),
       path.resolve(__dirname, "./src/scripts/research/researchDisplay.js"),
+      path.resolve(__dirname, "./src/scripts/research/filterMenu.js"),
       path.resolve(__dirname, "./src/scripts/footer/footer.js"),
     ],
   },

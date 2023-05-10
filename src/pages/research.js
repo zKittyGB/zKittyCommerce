@@ -10,6 +10,7 @@ import openAdressModal from "../scripts/header/features/adressModal/openAdressMo
 import userMenuModal from "../scripts/header/features/userMenuModal/userMenuModal.js";
 import openUserMenuModal from "../scripts/header/features/userMenuModal/openUserMenuModal.js";
 import researchDisplay from "../scripts/research/researchDisplay.js";
+import filterMenu from "../scripts/research/filterMenu.js";
 import footer from "../scripts/footer/footer.js";
 
 const state = store.getState();

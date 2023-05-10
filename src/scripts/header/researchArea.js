@@ -69,12 +69,21 @@ function searchProduct() {
     const filteredProducts = productsList.filter((product) =>
       product.name.toLowerCase().includes(cleanedInputValue)
     );
+    //sort filtered product by name
+    filteredProducts.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
     // catch the id of each product including input value
     if (filteredProducts.length > 0) {
       //for each match, push the id in searchResult
       filteredProducts.forEach((product) => searchResult.push(product.id));
     }
-
     store.dispatch({
       type: "setResearchResult",
       payload: { searchResult, inputValue },
