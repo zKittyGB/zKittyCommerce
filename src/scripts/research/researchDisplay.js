@@ -52,16 +52,6 @@ function displayNumberOfResults() {
 }
 displayNumberOfResults();
 
-function sortGallery() {
-  //action listener on inputSort
-  const inputSort = document.querySelector("#sortInput");
-  inputSort.addEventListener("change", (event) => {
-    const inputSortValue = event.target.value;
-    console.log(inputSortValue);
-  });
-}
-sortGallery();
-
 function displayBodyResults() {
   //function that display the body of the result research
   const main = document.querySelector("#main");
@@ -173,3 +163,102 @@ function createStarsNotation(cardNotation, productFilter) {
     cardNotation.appendChild(star);
   }
 }
+
+function sortGallery() {
+  //function that sort the gallery
+  const state = store.getState();
+  const inputSort = document.querySelector("#sortInput");
+  const gallery = document.querySelector(
+    ".research-body-resultsArea-resultsGallery"
+  );
+  //action listener on inputSort
+  inputSort.addEventListener("change", (event) => {
+    //catch inputSort value
+    const inputSortValue = event.target.value;
+    const results = state.research.userResultResearch;
+    const inputValue = state.research.researchValue;
+    let productsList = products;
+    const resultSort = [];
+    let searchResult = [];
+    //remove the gallery children
+    while (gallery.firstChild) {
+      gallery.removeChild(gallery.firstChild);
+    }
+    //for each id matching with the user research
+    results.forEach((element) => {
+      //get the product in the list from the id
+      const productFilter = productsList.filter((item) => item.id === element);
+      //stock the sort element needed to compare
+      if (inputSortValue === "Mise en avant") {
+        //push in the new array
+        resultSort.push({
+          comparator: productFilter[0].name.toUpperCase(),
+          id: element,
+        });
+      } else if (
+        inputSortValue === "Prix: Ordre croissant" ||
+        inputSortValue === "Prix: Ordre décroissant"
+      ) {
+        //change the price to float
+        const priceString = productFilter[0].price
+          .slice(0, -1)
+          .replace(",", ".");
+        const priceFloat = parseFloat(priceString);
+        //push in the new array
+        resultSort.push({
+          comparator: priceFloat,
+          id: element,
+        });
+      } else if (inputSortValue === "Moyenne des commentaires") {
+        //push in the new array
+        resultSort.push({ comparator: productFilter[0].note, id: element });
+      } else if (inputSortValue === "Dernière arrivées") {
+        //push in the new array
+        resultSort.push({
+          comparator: productFilter[0].dateDeposit.replace(/\//g, "-"),
+          id: element,
+        });
+      }
+    });
+    //sort the array
+
+    if (
+      inputSortValue === "Mise en avant" ||
+      inputSortValue === "Prix: Ordre croissant"
+    ) {
+      //sort asc
+      resultSort.sort((a, b) => {
+        if (a.comparator < b.comparator) {
+          return -1;
+        }
+        if (a.comparator > b.comparator) {
+          return 1;
+        }
+        return 0;
+      });
+    } else {
+      //sort desc
+      resultSort.sort((a, b) => {
+        if (a.comparator < b.comparator) {
+          return 1;
+        }
+        if (a.comparator > b.comparator) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+    //push the sort ID in the searchResult array
+    resultSort.forEach((element) => {
+      searchResult.push(element.id);
+    });
+    //update searchResult in state with the sort
+    store.dispatch({
+      type: "setResearchResult",
+      payload: { searchResult, inputValue },
+    });
+    //recreate gallery
+    createCardResult(gallery);
+  });
+}
+sortGallery();

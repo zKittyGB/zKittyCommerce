@@ -73,7 +73,6 @@ const myReducer = (state = initialState, action) => {
     };
   }
   if (action.type === "setResearchResult") {
-    console.log(action.payload);
     return {
       ...state,
       research: {
