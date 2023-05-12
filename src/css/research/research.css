@@ -124,9 +124,32 @@ body{
 }
 
 /* menu filter left */
+.research-body-filterArea-freeDeliveryFilter {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.research-body-filterArea-freeDeliveryFilter-checkboxArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.research-body-filterArea-freeDeliveryFilter-checkboxArea input{
+    margin-left: 0;
+}
+
+.research-body-filterArea-freeDeliveryFilter p {
+    margin: 0;
+    font-size: 14px;
+}
+
 .research-body-filterArea-notation {
     margin-left: 30px;
+    margin-bottom: 20px;
 }
+
 .research-body-filterArea-notation-stars {
     display: flex;
     flex-direction: row;
@@ -134,14 +157,35 @@ body{
     height: 20px;
     margin: 0;
 }
+
 .research-body-filterArea-notation-stars p {
     margin-left: 5px;
     font-size: 14px;
 }
 
+.research-body-filterArea-markFilter {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.research-body-filterArea-markFilter-checkboxArea {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    align-items: center;
+}
+
+.research-body-filterArea-markFilter-checkboxArea p {
+    margin: 0;
+}
+
+.research-body-filterArea-markFilter-checkboxArea input {
+    margin-left: 0;
+}
+
 .research-body-filterArea-price {
     margin-left:30px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .checkboxPriceFilter {
@@ -158,6 +202,7 @@ body{
     align-items: center;
     margin-top: 10px;
 }
+
 
 .research-body-filterArea-price-divInputsPrice-inputPrice {
     width:60px;
@@ -193,5 +238,4 @@ body{
     border: 1px solid rgb(189, 189, 189);
     background-color: white;
     box-shadow: 0px 2px 1px rgba(150, 150, 150, 0.2);
-
 }

@@ -82,7 +82,7 @@ function displayBodyResults() {
 }
 displayBodyResults();
 
-function createCardResult(resultsGallery) {
+export function createCardResult(resultsGallery) {
   //function that create the results gallery
   const state = store.getState();
   const results = state.research.userResultResearch;
@@ -178,7 +178,9 @@ function sortGallery() {
     const results = state.research.userResultResearch;
     const inputValue = state.research.researchValue;
     let productsList = products;
+    //resultSort is use to stock the comparator element with the id
     const resultSort = [];
+    //searchResult is returned to update state
     let searchResult = [];
     //remove the gallery children
     while (gallery.firstChild) {
@@ -221,7 +223,6 @@ function sortGallery() {
       }
     });
     //sort the array
-
     if (
       inputSortValue === "Mise en avant" ||
       inputSortValue === "Prix: Ordre croissant"
