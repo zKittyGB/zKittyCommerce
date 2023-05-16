@@ -89,8 +89,9 @@ body{
 }
 
 .research-body-resultsArea-resultsGallery-card-details-notation {
-    width:60%;
+    width:33%;
     color:#ffa41c;
+    cursor:pointer;
 }
 
 #sortInput {
@@ -150,6 +151,11 @@ body{
     margin-bottom: 20px;
 }
 
+.label-checkbox-notation {
+    position: absolute;
+    width:110px;
+}
+
 .research-body-filterArea-notation-stars {
     display: flex;
     flex-direction: row;
@@ -196,6 +202,7 @@ body{
     font-size: 14px;
 }
 
+
 .research-body-filterArea-price-divInputsPrice {
     display: flex;
     flex-direction: row;
@@ -239,3 +246,4 @@ body{
     background-color: white;
     box-shadow: 0px 2px 1px rgba(150, 150, 150, 0.2);
 }
+

@@ -71,6 +71,7 @@ function displayNotationFilterMenu() {
     }
   }
   //set attribute to elements
+
   notation4Stars.setAttribute(
     "class",
     "notation4Stars research-body-filterArea-notation-stars"
@@ -104,9 +105,22 @@ function displayNotationFilterMenu() {
   setStarsNotation(notation1Stars);
   //add &plus after each stars
   for (let i = 1; i <= 4; i++) {
+    const checkboxLabel = document.createElement("label");
+    const notationCheckbox = document.createElement("input");
+    notationCheckbox.setAttribute(
+      "class",
+      `checkbox-notation filter-features checkbox-notation-${i}`
+    );
+    checkboxLabel.setAttribute("id", `label-checkbox-notation-${i}`);
+    checkboxLabel.setAttribute("class", `label-checkbox-notation`);
+    checkboxLabel.style.cursor = "pointer";
+    notationCheckbox.type = "checkbox";
+    notationCheckbox.style.visibility = "hidden";
     const andMore = document.createElement("p");
     andMore.textContent = "& plus";
     document.querySelector(`.notation${i}Stars`).appendChild(andMore);
+    document.querySelector(`.notation${i}Stars`).appendChild(checkboxLabel);
+    checkboxLabel.appendChild(notationCheckbox);
   }
 }
 displayNotationFilterMenu();
@@ -181,6 +195,8 @@ function displayPriceFilterMenu() {
   const maxPrice = document.createElement("div");
   const inputMaxPrice = document.createElement("input");
   const inputButtonPrice = document.createElement("button");
+  const checkboxMinPrice = document.createElement("input");
+  const checkboxMaxPrice = document.createElement("input");
   function displayCheckBoxPriceMenu(props) {
     //function that create each price line
     const priceArray = [20, 50, 100, 200, 500];
@@ -238,9 +254,34 @@ function displayPriceFilterMenu() {
     "class",
     "research-body-filterArea-price-divInputsPrice-inputPrice-button"
   );
-  inputButtonPrice.textContent = "Aller";
-
+  checkboxMinPrice.setAttribute(
+    "class",
+    `checkboxPricefilter-features filter-features price-checkbox-6`
+  );
+  checkboxMaxPrice.setAttribute(
+    "class",
+    `checkboxPricefilter-features filter-features price-checkbox-7`
+  );
+  inputButtonPrice.onclick = function () {
+    if (inputMinPrice.value != "") {
+      checkboxMinPrice.checked = true;
+      checkboxMinPrice.dispatchEvent(new Event("change"));
+    } else {
+      checkboxMinPrice.checked = false;
+      checkboxMinPrice.dispatchEvent(new Event("change"));
+    }
+    if (inputMaxPrice.value != "") {
+      checkboxMaxPrice.checked = true;
+      checkboxMaxPrice.dispatchEvent(new Event("change"));
+    } else {
+      checkboxMaxPrice.checked = false;
+      checkboxMaxPrice.dispatchEvent(new Event("change"));
+    }
+  };
+  checkboxMinPrice.type = "checkbox";
+  checkboxMaxPrice.type = "checkbox";
   //set content to the elements
+  inputButtonPrice.textContent = "Aller";
   h1PriceFilter.textContent = "Prix";
   inputMaxPrice.placeholder = "Max";
   inputMinPrice.placeholder = "Min";
@@ -266,6 +307,9 @@ function displayPriceFilterMenu() {
   }
   minPrice.appendChild(inputMinPrice);
   maxPrice.appendChild(inputMaxPrice);
+  //create invisible checkbox for minInput/maxInput area
+  divInputsPrice.appendChild(checkboxMinPrice);
+  divInputsPrice.appendChild(checkboxMaxPrice);
 }
 
 displayPriceFilterMenu();
@@ -275,6 +319,8 @@ const inputMinPrice = document.querySelector(".inputMinPrice");
 const inputMaxPrice = document.querySelector(".inputMaxPrice");
 const minPriceArea = document.querySelector(".minPriceArea");
 const maxPriceArea = document.querySelector(".maxPriceArea");
+const checkboxMinPrice = document.querySelector(".price-checkbox-7");
+const checkboxMaxPrice = document.querySelector(".price-checkbox-8");
 //event listener focus input min
 inputMinPrice.addEventListener("focus", function () {
   minPriceArea.style.border = "1px black solid";
@@ -296,14 +342,14 @@ inputMaxPrice.addEventListener("blur", function () {
   maxPriceArea.style.boxShadow = "none";
 });
 
-function uniquePriceCheckbox() {
+function uniqueCheckbox() {
   //function that bloque the multiple active checkbox possibility
   const checkboxPriceFilter = document.querySelectorAll(
     ".checkboxPricefilter-features"
   );
-  const markFiltercheckbox = document.querySelectorAll(
-    ".markFiltercheckbox-checkbox"
-  );
+  const checkboxNotationFilter =
+    document.querySelectorAll(".checkbox-notation");
+
   //bloque multiple active for price filter
   for (var i = 0; i < checkboxPriceFilter.length; i++) {
     checkboxPriceFilter[i].addEventListener("click", function () {
@@ -318,8 +364,22 @@ function uniquePriceCheckbox() {
       }
     });
   }
+  //bloque multiple active for  notation filter
+  for (var i = 0; i < checkboxNotationFilter.length; i++) {
+    checkboxNotationFilter[i].addEventListener("click", function () {
+      // Si la checkbox est cochée
+      if (this.checked) {
+        // Décocher toutes les autres checkboxes
+        for (var j = 0; j < checkboxNotationFilter.length; j++) {
+          if (checkboxNotationFilter[j] != this) {
+            checkboxNotationFilter[j].checked = false;
+          }
+        }
+      }
+    });
+  }
 }
-uniquePriceCheckbox();
+uniqueCheckbox();
 
 function filterFeatures() {
   const checkbox = document.querySelectorAll(".filter-features");
@@ -332,15 +392,17 @@ function filterFeatures() {
 
   //add an eventListner on each filter
   for (let i = 0; i < checkbox.length; i++) {
-    checkbox[i].addEventListener("click", function (e) {
-      //at clic, get the full details list of each results item
+    checkbox[i].addEventListener("change", function (e) {
       let elementChecked = [];
       let resultFullList = [];
+      let notationSearchResult = [];
       let temporarySearchResult = [];
       let cleanSearchResult = [];
       let searchResult = [];
       const inputValue = state.research.researchValue;
       const results = state.research.userResultResearch;
+      let listOfFilter = { notation: [], price: [], mark: [] };
+      //at clic, get the full details list of each results item
       results.forEach((element) => {
         const productFilter = productsList.filter(
           (item) => item.id === element
@@ -357,78 +419,162 @@ function filterFeatures() {
           );
         }
       });
-      let listOfFilter = { price: [], mark: [] };
       elementChecked.forEach((elementCheck) => {
-        // filtrer par prix
-        if (elementCheck.includes("price")) {
-          listOfFilter.price.push(elementCheck);
-          // trier par prix (appeler la fonction sortByPrice(elementCheck, resultFullList) ici)
+        //sort by notation
+        if (elementCheck.includes("notation")) {
+          //stock the list of filter selected
+          listOfFilter.notation.push(elementCheck);
         }
-        // filtrer par marque
+        //sort by price
+        if (elementCheck.includes("price")) {
+          //stock the list of filter selected
+          listOfFilter.price.push(elementCheck);
+        }
+        // sort by mark
         if (elementCheck.includes("mark")) {
           listOfFilter.mark.push(elementCheck);
-          // trier par marque (appeler la fonction sortByMark(elementChecked, resultFullList) ici)
+          //stock the list of filter selected
         }
       });
       //explore each element of the results
       resultFullList.forEach((element) => {
+        //check if notation filter is enable
+        if (listOfFilter.notation.length != 0) {
+          //get the notation filter enable
+          const checkboxKey = listOfFilter.notation[0].charAt(
+            listOfFilter.notation[0].length - 1
+          );
+          if (element.note >= checkboxKey) {
+            //push the element to the tempo array
+            notationSearchResult.push(element);
+          }
+        } else {
+          //if no notation filter
+          notationSearchResult.push(element);
+        }
         //check if mark filter are enable
         if (listOfFilter.mark.length != 0) {
           //for each mark filter, we ll check if element include the mark
           for (let j = 0; j < listOfFilter.mark.length; j++) {
-            if (
-              element.mark.includes(
-                listOfFilter.mark[j].substring(14).replaceAll("_", " ")
-              )
-            ) {
-              //push the element to the final array
-              temporarySearchResult.push(element);
-            }
+            notationSearchResult.forEach((notationElement) => {
+              if (
+                notationElement.mark.includes(
+                  listOfFilter.mark[j].substring(14).replaceAll("_", " ")
+                )
+              ) {
+                //push the element to the tempo array
+                temporarySearchResult.push(notationElement);
+              }
+            });
           }
         } else {
           //if no mark filter
-          temporarySearchResult.push(element);
+          temporarySearchResult = notationSearchResult;
         }
         //check if price filter is enable
         if (listOfFilter.price.length != 0) {
+          const inputMinPrice = document.querySelector(".inputMinPrice");
+          const inputMaxPrice = document.querySelector(".inputMaxPrice");
           let minPrice;
           let maxPrice;
+          let inputMinPriceValue = "";
+          let inputMaxPriceValue = "";
+          if (inputMinPrice.value != "") {
+            inputMinPriceValue = inputMinPrice.value;
+          } else {
+            inputMinPriceValue = "";
+          }
+          if (inputMaxPrice.value != "") {
+            inputMaxPriceValue = inputMaxPrice.value;
+          } else {
+            inputMaxPriceValue = "";
+          }
+
           //create an array of the different filter price
           const priceArray = [20, 50, 100, 200, 500];
           //get the number of the filtrer price enable
-          const checkboxKey = listOfFilter.price[0].charAt(
-            listOfFilter.price[0].length - 1
-          );
-          if (checkboxKey == 0) {
-            //filter result less  than 20€
-            minPrice = 0;
-            maxPrice = priceArray[checkboxKey];
-            //delete all element over the price
-            temporarySearchResult.forEach((element) => {
-              if (parseFloat(element.price.replace("€", "")) <= maxPrice) {
-                cleanSearchResult.push(element.id);
+          let checkboxKey = [];
+          //if checkbox inputMax & min are check
+          if (
+            inputMinPriceValue != "" &&
+            inputMaxPriceValue != "" &&
+            listOfFilter.price.length === 2
+          ) {
+            //stock two checkbox id
+            checkboxKey = [
+              listOfFilter.price[0].charAt(listOfFilter.price[0].length - 1),
+              listOfFilter.price[1].charAt(listOfFilter.price[1].length - 1),
+            ];
+          } else {
+            //stock one checkbox id
+            checkboxKey = listOfFilter.price[0].charAt(
+              listOfFilter.price[0].length - 1
+            );
+          }
+          //when an input min or max value was gave
+          if (inputMinPriceValue != "" || inputMaxPriceValue != "") {
+            let resultPriceInput = [];
+            if (checkboxKey[0] == 6) {
+              temporarySearchResult.forEach((element) => {
+                if (
+                  parseFloat(element.price.replace("€", "")) >=
+                  parseFloat(inputMinPriceValue)
+                ) {
+                  //push in final array if only one checkbox
+                  if (checkboxKey.length === 1) {
+                    cleanSearchResult.push(element.id);
+                  } else {
+                    //push in  penultimate array if checkbox 6 & 7
+                    resultPriceInput.push(element);
+                  }
+                }
+              });
+            }
+            if (checkboxKey[1] == 7 || checkboxKey[0] == 7) {
+              if (checkboxKey.length === 1) {
+                resultPriceInput = temporarySearchResult;
               }
-            });
-          } else if (checkboxKey > 0 && checkboxKey < 5) {
-            //filter result between 20/50-50/100-100/200-200/500
-            minPrice = priceArray[checkboxKey - 1];
-            maxPrice = priceArray[checkboxKey];
-            temporarySearchResult.forEach((element) => {
-              if (
-                parseFloat(element.price.replace("€", "")) <= maxPrice &&
-                parseFloat(element.price.replace("€", "")) >= minPrice
-              ) {
-                cleanSearchResult.push(element.id);
-              }
-            });
-          } else if (checkboxKey > 4) {
-            //filter result than more 500 €
-            minPrice = priceArray[checkboxKey - 1];
-            temporarySearchResult.forEach((element) => {
-              if (parseFloat(element.price.replace("€", "")) >= minPrice) {
-                cleanSearchResult.push(element.id);
-              }
-            });
+              resultPriceInput.forEach((element) => {
+                if (
+                  parseFloat(element.price.replace("€", "")) <=
+                  parseFloat(inputMaxPriceValue)
+                ) {
+                  cleanSearchResult.push(element.id);
+                }
+              });
+            }
+          } else {
+            if (checkboxKey == 0) {
+              //filter result less  than 20€
+              minPrice = 0;
+              maxPrice = priceArray[checkboxKey];
+              //delete all element over the price
+              temporarySearchResult.forEach((element) => {
+                if (parseFloat(element.price.replace("€", "")) <= maxPrice) {
+                  cleanSearchResult.push(element.id);
+                }
+              });
+            } else if (checkboxKey > 0 && checkboxKey < 5) {
+              //filter result between 20/50-50/100-100/200-200/500
+              minPrice = priceArray[checkboxKey - 1];
+              maxPrice = priceArray[checkboxKey];
+              temporarySearchResult.forEach((element) => {
+                if (
+                  parseFloat(element.price.replace("€", "")) <= maxPrice &&
+                  parseFloat(element.price.replace("€", "")) >= minPrice
+                ) {
+                  cleanSearchResult.push(element.id);
+                }
+              });
+            } else if (checkboxKey > 4) {
+              //filter result than more 500 €
+              minPrice = priceArray[checkboxKey - 1];
+              temporarySearchResult.forEach((element) => {
+                if (parseFloat(element.price.replace("€", "")) >= minPrice) {
+                  cleanSearchResult.push(element.id);
+                }
+              });
+            }
           }
         } else {
           //if no price filter
@@ -443,15 +589,12 @@ function filterFeatures() {
           searchResult.push(cleanSearchResult[k]);
         }
       }
-      console.log(searchResult);
       //update the state user research result
       store.dispatch({
         type: "setResearchResult",
         payload: { searchResult, inputValue },
       });
       searchResult = [];
-      console.log("searchresult", searchResult);
-
       //delete the gallery
       while (gallery.firstChild) {
         gallery.removeChild(gallery.firstChild);
