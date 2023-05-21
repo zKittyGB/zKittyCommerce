@@ -166,13 +166,13 @@ function createStarsNotation(cardNotation, productFilter) {
 
 function sortGallery() {
   //function that sort the gallery
-  const state = store.getState();
   const inputSort = document.querySelector("#sortInput");
   const gallery = document.querySelector(
     ".research-body-resultsArea-resultsGallery"
   );
   //action listener on inputSort
   inputSort.addEventListener("change", (event) => {
+    const state = store.getState();
     //catch inputSort value
     const inputSortValue = event.target.value;
     const results = state.research.userResultResearch;

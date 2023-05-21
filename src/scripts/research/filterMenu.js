@@ -263,6 +263,12 @@ function displayPriceFilterMenu() {
     `checkboxPricefilter-features filter-features price-checkbox-7`
   );
   inputButtonPrice.onclick = function () {
+    //uncheck price-checkbox 0 to 5
+    if (inputMinPrice.value != "" || inputMaxPrice.value != "") {
+      for (let j = 0; j < 6; j++) {
+        document.querySelector(`.price-checkbox-${j}`).checked = false;
+      }
+    }
     if (inputMinPrice.value != "") {
       checkboxMinPrice.checked = true;
       checkboxMinPrice.dispatchEvent(new Event("change"));
@@ -319,8 +325,7 @@ const inputMinPrice = document.querySelector(".inputMinPrice");
 const inputMaxPrice = document.querySelector(".inputMaxPrice");
 const minPriceArea = document.querySelector(".minPriceArea");
 const maxPriceArea = document.querySelector(".maxPriceArea");
-const checkboxMinPrice = document.querySelector(".price-checkbox-7");
-const checkboxMaxPrice = document.querySelector(".price-checkbox-8");
+
 //event listener focus input min
 inputMinPrice.addEventListener("focus", function () {
   minPriceArea.style.border = "1px black solid";
@@ -386,6 +391,7 @@ function filterFeatures() {
   const state = store.getState();
   const productsList = products;
   const resultSortList = [];
+  const inputSort = document.querySelector("#sortInput");
   const gallery = document.querySelector(
     ".research-body-resultsArea-resultsGallery"
   );
@@ -511,9 +517,28 @@ function filterFeatures() {
               listOfFilter.price[0].length - 1
             );
           }
+          //clean input value when user click on a price Checkbox
+          if (checkboxKey < 6) {
+            const minPriceCheckbox =
+              document.querySelector(`.price-checkbox-6`);
+            const maxPriceCheckbox =
+              document.querySelector(`.price-checkbox-7`);
+            e.target.checked = true;
+            minPriceCheckbox.checked = false;
+            maxPriceCheckbox.checked = false;
+            inputMinPrice.value = "";
+            inputMaxPrice.value = "";
+          }
           //when an input min or max value was gave
           if (inputMinPriceValue != "" || inputMaxPriceValue != "") {
             let resultPriceInput = [];
+            //disable price checkbox if input got value
+            for (let j = 0; j < 6; j++) {
+              const priceCheckbox = document.querySelector(
+                `.price-checkbox-${j}`
+              );
+              priceCheckbox.checked = false;
+            }
             if (checkboxKey[0] == 6) {
               temporarySearchResult.forEach((element) => {
                 if (
@@ -600,7 +625,13 @@ function filterFeatures() {
         gallery.removeChild(gallery.firstChild);
       }
       //recreate the gallery sort
-      createCardResult(gallery); // Appelle la fonction
+      if (inputSort.value != "Mise en avant") {
+        //keep the filter from the inputSort
+        const changeEvent = new Event("change");
+        inputSort.dispatchEvent(changeEvent);
+      } else {
+        createCardResult(gallery); // Appelle la fonction
+      }
     });
   }
 }
