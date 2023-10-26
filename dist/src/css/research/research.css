@@ -1,0 +1,249 @@
+html{
+    width:100%;
+    margin:0;
+}
+
+body{
+    width:100%;
+    margin : 0;
+    padding: 0;
+    color:white;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Shrikhand', cursive;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: black;    
+}
+
+
+.research-Nresult {
+    width:100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    border: 1px #aaaaaa solid;
+    box-shadow: 0px 2px 1px rgba(150, 150, 150, 0.2);
+}
+
+.research-Nresult p {
+    margin: 0;
+}
+
+.research-body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.research-body-filterArea {
+    width:20%;
+
+}
+.research-body-resultsArea {
+    width:80%;
+    padding:20px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.research-body-resultsArea-resultsGallery {
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.research-body-resultsArea-resultsGallery-card {
+    position: relative;
+    width:24%;
+    background-color: rgb(255, 255, 255);
+    margin-right: 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px #f0f0f0 solid;
+}
+
+.research-body-resultsArea-resultsGallery-card-img {
+    padding-bottom: 100%;
+    width:100%;
+    background-color: #999999;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;    /* hide  the img default background */
+    filter:brightness(1.6); /* add some brightness */
+    box-sizing: border-box;
+    border-radius: 5px 5px 0 0;
+}
+
+.research-body-resultsArea-resultsGallery-card-details {
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.research-body-resultsArea-resultsGallery-card-details-notation {
+    width:33%;
+    color:#ffa41c;
+    cursor:pointer;
+}
+
+#sortInput {
+    width: 210px;
+    border-radius: 10px;
+    height: 25px;
+    background-color: #f0f2f2;
+    font-size: 12px;
+    border: 1px solid #d0d4d4;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.205);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 10px
+}
+
+#sortInput:hover {
+    background-color: #e3e6e6;
+
+}
+#sortInput:focus {
+    outline: none;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 5px #0ca8c4;
+}
+
+.chevronDownSort {
+    position: absolute;
+    right:0;
+    margin-right: 35px;
+}
+
+/* menu filter left */
+.research-body-filterArea-freeDeliveryFilter {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.research-body-filterArea-freeDeliveryFilter-checkboxArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.research-body-filterArea-freeDeliveryFilter-checkboxArea input{
+    margin-left: 0;
+}
+
+.research-body-filterArea-freeDeliveryFilter p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.research-body-filterArea-notation {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.label-checkbox-notation {
+    position: absolute;
+    width:110px;
+}
+
+.research-body-filterArea-notation-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 20px;
+    margin: 0;
+}
+
+.research-body-filterArea-notation-stars p {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.research-body-filterArea-markFilter {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.research-body-filterArea-markFilter-checkboxArea {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    align-items: center;
+}
+
+.research-body-filterArea-markFilter-checkboxArea p {
+    margin: 0;
+}
+
+.research-body-filterArea-markFilter-checkboxArea input {
+    margin-left: 0;
+}
+
+.research-body-filterArea-price {
+    margin-left:30px;
+    margin-bottom: 20px;
+}
+
+.checkboxPriceFilter {
+    display: flex;
+    flex-direction: row;
+    height:20px;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+.research-body-filterArea-price-divInputsPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.research-body-filterArea-price-divInputsPrice-inputPrice {
+    width:60px;
+    height: 30px;
+    border: 1px solid rgb(124, 124, 124);
+    border-radius: 4px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice p{
+    margin: 0;
+    margin-left: 2px;
+    font-size: 14px;
+    color: rgb(78, 77, 77);
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice-input {
+    width:28px;
+    border: none;
+    margin-top: 1px;
+    height: 85%;
+}
+.research-body-filterArea-price-divInputsPrice-inputPrice-input:focus {
+    outline: none;
+}
+
+.research-body-filterArea-price-divInputsPrice-inputPrice-button {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(189, 189, 189);
+    background-color: white;
+    box-shadow: 0px 2px 1px rgba(150, 150, 150, 0.2);
+}
+
