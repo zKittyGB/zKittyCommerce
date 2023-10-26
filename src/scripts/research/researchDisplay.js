@@ -263,3 +263,51 @@ function sortGallery() {
   });
 }
 sortGallery();
+
+const state = store.getState();
+const resultats = state.research.userResultResearch;
+// const totalResults = results.length;
+// const resultsPerPage = 25;
+// function displayResultsByPage(page) {
+//   const totalPages = Math.ceil(totalResults / resultsPerPage);
+//   const startIndex = (pageNumber - 1) * resultsPerPage;
+//   const endIndex = startIndex + resultsPerPage - 1;
+//   const resultsToDisplay = results.slice(startIndex, endIndex + 1);
+// }
+
+const resultatsParPage = 2; // Nombre de résultats par page
+const nombreTotalResultats = resultats.length;
+const nombreTotalPages = Math.ceil(nombreTotalResultats / resultatsParPage);
+
+function afficherResultats(page) {
+  const debut = (page - 1) * resultatsParPage;
+  const fin = debut + resultatsParPage;
+  const pageResultats = resultats.slice(debut, fin);
+
+  // Afficher les résultats sur la page (par exemple, en mettant à jour le contenu d'une div)
+  const resultatDiv = document.getElementById("resultats");
+  resultatDiv.innerHTML = "";
+
+  for (const resultat of pageResultats) {
+    const resultatElement = document.createElement("p");
+    resultatElement.textContent = resultat;
+    resultatDiv.appendChild(resultatElement);
+  }
+}
+
+function creerBoutonsPagination() {
+  const paginationDiv = document.getElementById("pagination");
+
+  for (let page = 1; page <= nombreTotalPages; page++) {
+    const bouton = document.createElement("button");
+    bouton.textContent = page;
+    bouton.addEventListener("click", () => {
+      afficherResultats(page);
+    });
+    paginationDiv.appendChild(bouton);
+  }
+}
+
+// Appel initial pour afficher les résultats de la première page
+afficherResultats(1);
+creerBoutonsPagination();
