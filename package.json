@@ -1,6 +1,6 @@
 {
   "name": "zkittycommerce",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "build": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-and-commit": "npm run build && git add . && git commit -m 'Nouvelle construction' && git push"
-
   },
   "author": "",
   "license": "ISC",
