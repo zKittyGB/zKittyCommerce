@@ -134,7 +134,7 @@
                     n.appendChild(c),
                     n.appendChild(d);
                 })(),
-                (s.href = "./index.html"),
+                (s.href = "/index.html"),
                 (i.textContent = "Gérez vos adresses de livraison"),
                 c.setAttribute(
                   "class",
@@ -290,7 +290,7 @@
               (c.textContent = "Listes d'envies"),
               (h.textContent = "Acheter à nouveau"),
               (y.textContent = "Votre compte"),
-              (f.src = "../../../../src/assets/images/logo_big.png"),
+              (f.src = "/src/assets/images/logo_big.png"),
               e.appendChild(t),
               t.appendChild(r),
               r.appendChild(n),
@@ -489,7 +489,7 @@
                   "state",
                   JSON.stringify(p.default.getState())
                 ),
-                (window.location.href = "../../../../index.html");
+                (window.location.href = "/index.html");
             else {
               var a = r.trim().toLowerCase(),
                 o = t.filter(function (e) {
@@ -510,7 +510,7 @@
                   "state",
                   JSON.stringify(p.default.getState())
                 ),
-                (window.location.href = "../../../../pages/research.html");
+                (window.location.href = "/pages/research.html");
             }
           }),
           m.setAttribute("class", "searchIcon fa-solid fa-magnifying-glass"),
@@ -552,7 +552,7 @@
           (l = document.createElement("p")),
           (u = document.createElement("em")),
           i.setAttribute("class", "aUserMenu"),
-          (i.href = "./pages/login.html"),
+          (i.href = "/pages/login.html"),
           s.setAttribute("class", "userMenu"),
           c.setAttribute("class", "pUserName"),
           !0 === a.isLogged
