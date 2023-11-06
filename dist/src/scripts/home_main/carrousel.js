@@ -9,17 +9,17 @@ function displayLightbox() {
   const arrowRight = document.createElement("button");
   alexaImg.setAttribute(
     "src",
-    "../../src/assets/images/products/alexa_lightbox.png"
+    "/dist/src/assets/images/products/alexa_lightbox.png"
   );
   alexaImg.setAttribute("alt", "alexa_banner");
   kindleImg.setAttribute(
     "src",
-    "../../src/assets/images/products/kindle_lightbox.png"
+    "/dist/src/assets/images/products/kindle_lightbox.png"
   );
   kindleImg.setAttribute("alt", "kindle_banner");
   asusImg.setAttribute(
     "src",
-    "../../src/assets/images/products/asus_lightbox.png"
+    "/dist/src/assets/images/products/asus_lightbox.png"
   );
   asusImg.setAttribute("alt", "asus_banner");
   arrowLeft.setAttribute("class", "prev-btn fa-solid fa-chevron-left fa-2xl");
