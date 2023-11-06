@@ -60,7 +60,7 @@ function searchProduct() {
       payload: { searchResult, inputValue },
     });
     localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
-    window.location.href = "../../../../dist/index.html";
+    window.location.href = "../../../../index.html";
   } else {
     // clean useless space before and after the input value
     const cleanedInputValue = inputValue.trim().toLowerCase();
