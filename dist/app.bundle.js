@@ -510,7 +510,7 @@
                   "state",
                   JSON.stringify(p.default.getState())
                 ),
-                (window.location.href = "../../../../dist/pages/research.html");
+                (window.location.href = "../../../../pages/research.html");
             }
           }),
           m.setAttribute("class", "searchIcon fa-solid fa-magnifying-glass"),
@@ -581,17 +581,17 @@
           (i = document.createElement("button")),
           r.setAttribute(
             "src",
-            "/dist/src/assets/images/products/alexa_lightbox.png"
+            "/src/assets/images/products/alexa_lightbox.png"
           ),
           r.setAttribute("alt", "alexa_banner"),
           n.setAttribute(
             "src",
-            "/dist/src/assets/images/products/kindle_lightbox.png"
+            "/src/assets/images/products/kindle_lightbox.png"
           ),
           n.setAttribute("alt", "kindle_banner"),
           a.setAttribute(
             "src",
-            "/dist/src/assets/images/products/asus_lightbox.png"
+            "/src/assets/images/products/asus_lightbox.png"
           ),
           a.setAttribute("alt", "asus_banner"),
           o.setAttribute("class", "prev-btn fa-solid fa-chevron-left fa-2xl"),

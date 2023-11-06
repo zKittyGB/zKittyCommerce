@@ -89,6 +89,6 @@ function searchProduct() {
       payload: { searchResult, inputValue },
     });
     localStorage.setItem("state", JSON.stringify(store.getState())); // save the state in localStorage
-    window.location.href = "../../../../dist/pages/research.html";
+    window.location.href = "/dist/pages/research.html";
   }
 }
